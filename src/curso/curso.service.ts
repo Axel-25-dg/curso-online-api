@@ -37,4 +37,15 @@ export class CursosService {
         if (!curso) return null;
         return this.cursoRepository.remove(curso);
     }
+
+    async horasSemanales(dataBody: any) {
+        const horasPorDia = dataBody.horasPorDia;
+        let totalHoras = 0;
+
+        for (const h of horasPorDia) {
+            totalHoras += h;
+        }
+
+        return totalHoras;
+    }
 }

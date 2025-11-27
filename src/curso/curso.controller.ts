@@ -5,6 +5,7 @@ import { UpdateCursoDto } from './dto/update-curso.dto';
 
 @Controller('cursos')
 export class CursosController {
+    reportesService: any;
     constructor(private readonly cursosService: CursosService) { }
 
     @Post()
@@ -30,5 +31,10 @@ export class CursosController {
     @Delete(':id')
     remove(@Param('id') id: string) {
         return this.cursosService.remove(id);
+    }
+
+    @Post('horas-semanales')
+    horasSemanales(@Body() dataBody: any) {
+        return this.reportesService.horasSemanales(dataBody);
     }
 }
